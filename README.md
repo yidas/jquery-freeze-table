@@ -6,11 +6,11 @@ RWD Table with freezing head and columns for JavaScript
 FEATURES
 --------
 
-- *Freeze the head rows and columns for big table*
+- *Freeze the **head rows and columns** for big table*
 
-- *Customized options for setting*
+- ***Customized options** for setting*
 
-- *Namespace support for multiple tables* 
+- ***Namespace support** for multiple tables* 
 
 ---
 
@@ -67,3 +67,27 @@ Or using by jQuery extension:
    });
 </script>
 ```
+
+### Options
+
+Options could be passed via JavaScript with object.
+
+|Name         |Type    |Default            |Description|
+|:--          |:--     |:--                |:--        |
+|freezeHead   |boolean |true               |Enable to freeze `<thead>`|
+|freezeColumn |boolean |true               |Enable to freeze column(s)|
+|fixedNavbar  |string  |'.navbar-fixed-top'|Enable to freeze `<thead>`|
+|namespace    |string  |'freeze-table'     |Table namespace for unbind|
+|columnNum    |integer |1                  |The number of column(s) for freeze|
+|columnBorderWidth|interger|2              |The addon border width for freeze column(s)|
+|columnStyles |object  |null               |Customized CSS styles for freeze column(s) wrap. {'style':'value'}| 
+
+
+
+
+
+
+
+
+
+
