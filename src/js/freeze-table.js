@@ -18,7 +18,7 @@
     options = options || {};
     var freezeHead = options.freezeHead || true;
     var freezeColumn = options.freezeColumn || true;
-    var fixedNavbar = options.fixedNavbar || null;
+    var fixedNavbar = options.fixedNavbar || '.navbar-fixed-top';
     var namespace = options.namespace || 'freeze-table';
 
     // Catch table dom

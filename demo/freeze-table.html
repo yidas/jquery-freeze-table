@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <style>
+    tr {
+      background-color: rgb(255,255,255,1) !important;
+    }
+    </style>
+</head>
+<body>
+    <div class="table-responsive">
+    <table cellspacing="0" id="ledger-clone" class="table table-small-font table-bordered table-striped">
+        <thead>
+            <tr>
+                <th rowspan="2" id="ledger-col-0-clone">#</th>
+                <th rowspan="2" data-priority="1" id="ledger-col-1-clone">Date</th>
+                <th rowspan="2" data-priority="1" id="ledger-col-2-clone">Text</th>
+                <th colspan="2" data-priority="1" id="ledger-col-3-clone">Bank (1930)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-4-clone">Eget kapital John Doe (2010)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-5-clone">Eget kapital Jane Doe (2020)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-6-clone">Utgående moms 25 % (2610)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-7-clone">Moms varuförvärv EU 25 % (2615)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-8-clone">Ingående moms 25 % (2640)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-9-clone">Ingående moms utland (2645)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-10-clone">Moms redovisningskonto (2650)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-11-clone">Momspliktiga intäkter (3000)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-12-clone">Inköp varor EU 25 % (4056)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-13-clone">Förbrukningsinventarier (5400)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-14-clone">Kontorsmaterial och trycksaker (6100)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-15-clone">Övriga externa tjänster (6500)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-16-clone">Bankavgifter (6570)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-17-clone">Årets resultat (8999)</th>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">Credit</th>
+                <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-4">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-4">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-5">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-5">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-6">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-6">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-7">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-7">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-9">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-9">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-10">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-10">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-11">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-11">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-12">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-12">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-15">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-15">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-16">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-16">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-17">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-17">Debit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">1</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-01-11</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">Office stuff</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">100 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">25 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">75 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">3</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-03-20</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">Office stuff</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">100 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">25 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">75 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">4</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-04-11</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPhone</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">7000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">5250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">4</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-04-11</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPhone</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">7000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">5250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">4</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-04-11</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPhone</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">7000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">5250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">4</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-04-11</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPhone</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">7000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">5250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">4</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-04-11</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPhone</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">7000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">5250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th data-org-colspan="1" data-columns="ledger-col-0"></th>
+            <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-1"></th>
+            <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-2"></th>
+            <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">12 200 SEK</th>
+            <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></th>
+            <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></th>
+            <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></th>
+            <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></th>
+            <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></th>
+            <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></th>
+            <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></th>
+            <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></th>
+            <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">3050 SEK</th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">8000 SEK</th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">150 SEK</th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></th>
+            <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></th>
+        </tr>
+        </tfoot>
+    </table>
+    </div>
+    <br/><br/><br/><br/><br/><br/>
+    <div class="table-responsive2" style="overflow-x: scroll">
+    <table cellspacing="0" id="ledger-clone" class="table table-small-font table-bordered table-striped">
+        <thead>
+            <tr>
+                <th rowspan="2" id="ledger-col-0-clone">#</th>
+                <th rowspan="2" data-priority="1" id="ledger-col-1-clone">Date</th>
+                <th rowspan="2" data-priority="1" id="ledger-col-2-clone">Text</th>
+                <th colspan="2" data-priority="1" id="ledger-col-3-clone">Bank (1930)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-4-clone">Eget kapital John Doe (2010)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-5-clone">Eget kapital Jane Doe (2020)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-6-clone">Utgående moms 25 % (2610)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-7-clone">Moms varuförvärv EU 25 % (2615)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-8-clone">Ingående moms 25 % (2640)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-9-clone">Ingående moms utland (2645)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-10-clone">Moms redovisningskonto (2650)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-11-clone">Momspliktiga intäkter (3000)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-12-clone">Inköp varor EU 25 % (4056)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-13-clone">Förbrukningsinventarier (5400)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-14-clone">Kontorsmaterial och trycksaker (6100)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-15-clone">Övriga externa tjänster (6500)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-16-clone">Bankavgifter (6570)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-17-clone">Årets resultat (8999)</th>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">Credit</th>
+                <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-4">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-4">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-5">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-5">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-6">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-6">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-7">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-7">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-9">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-9">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-10">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-10">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-11">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-11">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-12">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-12">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-15">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-15">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-16">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-16">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-17">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-17">Debit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">1</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-01-11</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">Office stuff</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">100 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">25 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">75 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div class="table-responsive3" style="overflow: scroll">
+    <table cellspacing="0" id="ledger-clone" class="table table-small-font table-bordered table-striped">
+        <thead>
+            <tr>
+                <th rowspan="2" id="ledger-col-0-clone">#</th>
+                <th rowspan="2" data-priority="1" id="ledger-col-1-clone">Date</th>
+                <th rowspan="2" data-priority="1" id="ledger-col-2-clone">Text</th>
+                <th colspan="2" data-priority="1" id="ledger-col-3-clone">Bank (1930)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-4-clone">Eget kapital John Doe (2010)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-5-clone">Eget kapital Jane Doe (2020)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-6-clone">Utgående moms 25 % (2610)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-7-clone">Moms varuförvärv EU 25 % (2615)</th>
+                <th colspan="2" data-priority="3" id="ledger-col-8-clone">Ingående moms 25 % (2640)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-9-clone">Ingående moms utland (2645)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-10-clone">Moms redovisningskonto (2650)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-11-clone">Momspliktiga intäkter (3000)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-12-clone">Inköp varor EU 25 % (4056)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-13-clone">Förbrukningsinventarier (5400)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-14-clone">Kontorsmaterial och trycksaker (6100)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-15-clone">Övriga externa tjänster (6500)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-16-clone">Bankavgifter (6570)</th>
+                <th colspan="2" data-priority="6" id="ledger-col-17-clone">Årets resultat (8999)</th>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">Credit</th>
+                <th data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-4">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-4">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-5">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-5">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-6">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-6">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-7">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-7">Debit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">Credit</th>
+                <th data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-9">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-9">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-10">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-10">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-11">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-11">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-12">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-12">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-15">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-15">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-16">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-16">Debit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-17">Credit</th>
+                <th data-org-colspan="1" data-priority="6" data-columns="ledger-col-17">Debit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">1</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-01-11</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">Office stuff</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">100 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">25 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14">75 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+            <tr>
+                <th data-org-colspan="1" data-columns="ledger-col-0">2</th>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-2">iPad</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3">5000 SEK</td>
+                <td data-org-colspan="1" data-priority="1" data-columns="ledger-col-3"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-4"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-5"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-6"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-7"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8"></td>
+                <td data-org-colspan="1" data-priority="3" data-columns="ledger-col-8">1250 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-9"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-10"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-11"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-12"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-13">3750 SEK</td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-14"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-15"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-16"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+                <td data-org-colspan="1" data-priority="6" data-columns="ledger-col-17"></td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://raw.githubusercontent.com/yidas/js-freeze-table/master/src/js/freeze-table.js"></script>
+<script>
+
+$(document).ready(function() {
+
+    $(".table-responsive2").freezeTable();
+  new FreezeTable($(".table-responsive"));
+//   new FreezeTable(".table-responsive2", {
+//     'columnNum' : 2,
+//   });
+  new FreezeTable(".table-responsive3", {
+    'columnNum' : 2,
+    'styles': {'background-color': 'rgba(0, 0, 0, 1)'},
+  });
+
+});
+</script>
+</body>
+</html>
