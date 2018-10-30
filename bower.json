@@ -1,0 +1,33 @@
+{
+  "name": "freeze-table",
+  "description": "RWD Table with freezing head and columns for JavaScript",
+  "version": "1.0.0",
+  "keywords": [
+    "RWD",
+    "responsive",
+    "tables",
+    "freeze",
+    "row",
+    "column",
+    "head"
+  ],
+  "homepage": "https://github.com/yidas/js-freeze-table",
+  "authors": [
+    "Nick Tsai <myintaer@gmail.com>",
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yidas/js-freeze-table.git"
+  },
+  "license": "MIT",
+  "main": [
+    "dist/js/freeze-table.js"
+  ],
+  "ignore": [
+    ".*",
+    "docs"
+  ],
+  "dependencies": {
+    "jquery": ">=1.10.1"
+  }
+}
