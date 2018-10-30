@@ -76,7 +76,7 @@ Options could be passed via JavaScript with object.
 |:--          |:--     |:--                |:--        |
 |freezeHead   |boolean |true               |Enable to freeze `<thead>`|
 |freezeColumn |boolean |true               |Enable to freeze column(s)|
-|fixedNavbar  |string  |'.navbar-fixed-top'|Enable to freeze `<thead>`|
+|fixedNavbar  |string  |'.navbar-fixed-top'|Fixed navbar deviation consideration. **Example**: '#navbar'|
 |namespace    |string  |'freeze-table'     |Table namespace for unbind|
 |columnNum    |integer |1                  |The number of column(s) for freeze|
 |columnBorderWidth|interger|2              |The addon border width for freeze column(s)|
