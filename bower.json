@@ -1,0 +1,35 @@
+{
+  "name": "jquery-freeze-table",
+  "description": "RWD Table with freezing head and columns for jQuery",
+  "version": "1.0.0",
+  "keywords": [
+    "RWD",
+    "responsive",
+    "tables",
+    "freeze",
+    "fixed",
+    "row",
+    "column",
+    "head",
+    "scorll bar"
+  ],
+  "homepage": "https://github.com/yidas/jquery-freeze-table",
+  "authors": [
+    "Nick Tsai <myintaer@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yidas/jquery-freeze-table.git"
+  },
+  "license": "MIT",
+  "main": [
+    "dist/js/freeze-table.js"
+  ],
+  "ignore": [
+    ".*",
+    "docs"
+  ],
+  "dependencies": {
+    "jquery": ">=1.10.1"
+  }
+}

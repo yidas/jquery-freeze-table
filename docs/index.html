@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>yidas/jquery-freeze-table Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="narrow-jumbotron.css" rel="stylesheet">
+    <!-- Custom style for Freeze Table -->
+    <style>
+    table {
+        font-size: 10pt;
+    }
+    /* table th,
+    .table-fill tr {
+      background-color: rgb(255,255,255,1) !important;
+    } */
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Demo <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/yidas/jquery-freeze-table">GitHub</a>
+        </li>
+      </ul>
+    </nav>
+    <h3 class="text-muted">Freeze Table for JavaScript</h3>
+  </div>
+
+  <div class="table-basic">
+    <table cellspacing="0" id="table-basic" class="table table-sm table-bordered table-striped" style="min-width: 1200px;">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Last Trade</th>
+          <th>Trade Time</th>
+          <th>Change</th>
+          <th>Prev Close</th>
+          <th>Open</th>
+          <th>Bid</th>
+          <th>Ask</th>
+          <th>1y Target Est</th>
+          <th>Lorem</th>
+          <th>Ipsum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <!-- Repeat -->
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+  <!-- Example code -->
+  <div class="card">
+    <div class="card-header">Example Code</div>
+    <div class="card-body">
+      <pre><code>$(".table-basic").freezeTable();</code></pre>
+    </div>
+  </div>
+  <!-- /Example code --> 
+
+  <br><br>
+
+  <h5>Freeze Column(s) only</h5>
+  <div class="table-columns-only table-fill">
+    <table cellspacing="0" class="table table-small-font table-bordered table-striped" style="min-width: 3400px;">
+      <thead>
+        <tr>
+          <th rowspan="2">#</th>
+          <th rowspan="2">Date</th>
+          <th rowspan="2">Text</th>
+          <th colspan="2">Bank (1930)</th>
+          <th colspan="2">Eget kapital John Doe (2010)</th>
+          <th colspan="2">Eget kapital Jane Doe (2020)</th>
+          <th colspan="2">Utgående moms 25 % (2610)</th>
+          <th colspan="2">Moms varuförvärv EU 25 % (2615)</th>
+          <th colspan="2">Ingående moms 25 % (2640)</th>
+          <th colspan="2">Ingående moms utland (2645)</th>
+          <th colspan="2">Moms redovisningskonto (2650)</th>
+          <th colspan="2">Momspliktiga intäkter (3000)</th>
+          <th colspan="2">Inköp varor EU 25 % (4056)</th>
+          <th colspan="2">Förbrukningsinventarier (5400)</th>
+          <th colspan="2">Kontorsmaterial och trycksaker (6100)</th>
+          <th colspan="2">Övriga externa tjänster (6500)</th>
+          <th colspan="2">Bankavgifter (6570)</th>
+          <th colspan="2">Årets resultat (8999)</th>
+        </tr>
+        <tr>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th data-columns="ledger-col-0">1</th>
+          <td data-priority="1" data-columns="ledger-col-1">2014-01-11</td>
+          <td data-priority="1" data-columns="ledger-col-2">Office stuff</td>
+          <td>100 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>25 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>75 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th data-columns="ledger-col-0">2</th>
+          <td data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+          <td data-priority="1" data-columns="ledger-col-2">iPad</td>
+          <td>5000 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1250 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>3750 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th data-columns="ledger-col-0">3</th>
+          <td data-priority="1" data-columns="ledger-col-1">2014-03-20</td>
+          <td data-priority="1" data-columns="ledger-col-2">Office stuff</td>
+          <td>100 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>25 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>75 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th data-columns="ledger-col-0">4</th>
+          <td data-priority="1" data-columns="ledger-col-1">2014-04-11</td>
+          <td data-priority="1" data-columns="ledger-col-2">iPhone</td>
+          <td>7000 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1750 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>5250 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th data-columns="ledger-col-0"></th>
+        <th data-priority="1" data-columns="ledger-col-1"></th>
+        <th data-priority="1" data-columns="ledger-col-2"></th>
+        <th>12 200 SEK</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>3050 SEK</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>8000 SEK</th>
+        <th></th>
+        <th>150 SEK</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+  <br>
+  <!-- Example code -->
+  <div class="card">
+    <div class="card-header">Example Code</div>
+    <div class="card-body">
+      <pre><code>$(".table-columns-only").freezeTable({
+  'freezeHead': false,
+});</code></pre>
+    </div>
+  </div>
+  <!-- /Example code --> 
+
+  <br><br>
+
+  <h5>Freeze Head only</h5>
+  <div class="table-head-only" style="overflow-x: scroll;">
+    <table cellspacing="0" id="table-basic" class="table table-sm table-striped" style="min-width: 1200px;">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Last Trade</th>
+          <th>Trade Time</th>
+          <th>Change</th>
+          <th>Prev Close</th>
+          <th>Open</th>
+          <th>Bid</th>
+          <th>Ask</th>
+          <th>1y Target Est</th>
+          <th>Lorem</th>
+          <th>Ipsum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GOOG <span class="co-name">Google Inc.</span></td>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <td>AAPL <span class="co-name">Apple Inc.</span></td>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <td>AMZN <span class="co-name">Amazon.com Inc.</span></td>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <td>ORCL <span class="co-name">Oracle Corporation</span></td>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <td>MSFT <span class="co-name">Microsoft Corporation</span></td>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <td>CSCO <span class="co-name">Cisco Systems, Inc.</span></td>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <td>YHOO <span class="co-name">Yahoo! Inc.</span></td>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <!-- Repeat -->
+        <tr>
+          <td>GOOG <span class="co-name">Google Inc.</span></td>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <td>AAPL <span class="co-name">Apple Inc.</span></td>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <td>AMZN <span class="co-name">Amazon.com Inc.</span></td>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <td>ORCL <span class="co-name">Oracle Corporation</span></td>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <td>MSFT <span class="co-name">Microsoft Corporation</span></td>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <td>CSCO <span class="co-name">Cisco Systems, Inc.</span></td>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <td>YHOO <span class="co-name">Yahoo! Inc.</span></td>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <br>
+  <!-- Example code -->
+  <div class="card">
+    <div class="card-header">Example Code</div>
+    <div class="card-body">
+      <pre><code>$(".table-head-only").freezeTable({
+  'freezeColumn': false,
+});</code></pre>
+    </div>
+  </div>
+  <!-- /Example code --> 
+
+  <br><br>
+
+  <h5>Multi-Columns Freeze Table</h5>
+  <div class="table-multi-columns table-fill">
+    <table cellspacing="0" class="table table-small-font table-bordered table-striped" style="min-width: 3400px;">
+      <thead>
+        <tr>
+          <th rowspan="2">#</th>
+          <th rowspan="2">Date</th>
+          <th rowspan="2">Text</th>
+          <th colspan="2">Bank (1930)</th>
+          <th colspan="2">Eget kapital John Doe (2010)</th>
+          <th colspan="2">Eget kapital Jane Doe (2020)</th>
+          <th colspan="2">Utgående moms 25 % (2610)</th>
+          <th colspan="2">Moms varuförvärv EU 25 % (2615)</th>
+          <th colspan="2">Ingående moms 25 % (2640)</th>
+          <th colspan="2">Ingående moms utland (2645)</th>
+          <th colspan="2">Moms redovisningskonto (2650)</th>
+          <th colspan="2">Momspliktiga intäkter (3000)</th>
+          <th colspan="2">Inköp varor EU 25 % (4056)</th>
+          <th colspan="2">Förbrukningsinventarier (5400)</th>
+          <th colspan="2">Kontorsmaterial och trycksaker (6100)</th>
+          <th colspan="2">Övriga externa tjänster (6500)</th>
+          <th colspan="2">Bankavgifter (6570)</th>
+          <th colspan="2">Årets resultat (8999)</th>
+        </tr>
+        <tr>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Credit</th>
+          <th>Debit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th data-columns="ledger-col-0">1</th>
+          <td data-priority="1" data-columns="ledger-col-1">2014-01-11</td>
+          <td data-priority="1" data-columns="ledger-col-2">Office stuff</td>
+          <td>100 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>25 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>75 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th data-columns="ledger-col-0">2</th>
+          <td data-priority="1" data-columns="ledger-col-1">2014-02-12</td>
+          <td data-priority="1" data-columns="ledger-col-2">iPad</td>
+          <td>5000 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1250 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>3750 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th data-columns="ledger-col-0">3</th>
+          <td data-priority="1" data-columns="ledger-col-1">2014-03-20</td>
+          <td data-priority="1" data-columns="ledger-col-2">Office stuff</td>
+          <td>100 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>25 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>75 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th data-columns="ledger-col-0">4</th>
+          <td data-priority="1" data-columns="ledger-col-1">2014-04-11</td>
+          <td data-priority="1" data-columns="ledger-col-2">iPhone</td>
+          <td>7000 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1750 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>5250 SEK</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th data-columns="ledger-col-0"></th>
+        <th data-priority="1" data-columns="ledger-col-1"></th>
+        <th data-priority="1" data-columns="ledger-col-2"></th>
+        <th>12 200 SEK</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>3050 SEK</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>8000 SEK</th>
+        <th></th>
+        <th>150 SEK</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+  <br>
+  <!-- Example code -->
+  <div class="card">
+    <div class="card-header">Example Code</div>
+    <div class="card-body">
+      <pre><code>$(".table-multi-columns").freezeTable({
+  'columnNum' : 2,
+});</code></pre>
+    </div>
+  </div>
+  <!-- /Example code -->  
+
+  <br><br>
+
+  <h5>Shadow Enabled Table</h5>
+  <div class="table-shadow">
+    <table cellspacing="0" id="table-basic" class="table table-sm table-bordered table-striped" style="min-width: 1200px;">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Last Trade</th>
+          <th>Trade Time</th>
+          <th>Change</th>
+          <th>Prev Close</th>
+          <th>Open</th>
+          <th>Bid</th>
+          <th>Ask</th>
+          <th>1y Target Est</th>
+          <th>Lorem</th>
+          <th>Ipsum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <!-- Repeat -->
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+  <!-- Example code -->
+  <div class="card">
+    <div class="card-header">Example Code</div>
+    <div class="card-body">
+      <pre><code>$(".table-shadow").freezeTable({
+  'shadow': true,
+});</code></pre>
+    </div>
+  </div>
+  <!-- /Example code --> 
+
+  <br/><br/>
+  <h5>Customized Styles Table</h5>
+  <div class="table-wrap-styles">
+    <table cellspacing="0" id="group-test" class="table table-small-font table-bordered table-striped" style="min-width: 1800px;">
+      <thead>
+        <tr class="hide">
+          <th id="group-test-col-0">#</th>
+          <th colspan="2" data-priority="1" id="group-test-col-1">Group A</th>
+          <th colspan="2" data-priority="1" id="group-test-col-2">Group B</th>
+          <th colspan="2" data-priority="1" id="group-test-col-3">Group C</th>
+          <th colspan="2" data-priority="3" id="group-test-col-4">Group D</th>
+          <th colspan="2" data-priority="3" id="group-test-col-5">Group E</th>
+          <th colspan="2" data-priority="3" id="group-test-col-6">Group F</th>
+          <th colspan="2" data-priority="6" id="group-test-col-7">Group G</th>
+          <th colspan="2" data-priority="6" id="group-test-col-8">Group H</th>
+          <th colspan="2" data-priority="6" id="group-test-col-9">Group I</th>
+        </tr>
+        <tr>
+          <th data-columns="group-test-col-0">#</th>
+          <th data-priority="1" data-columns="group-test-col-1">Column A.1</th>
+          <th data-priority="1" data-columns="group-test-col-1">Column A.2</th>
+          <th data-priority="1" data-columns="group-test-col-2">Column B.1</th>
+          <th data-priority="1" data-columns="group-test-col-2">Column B.2</th>
+          <th data-priority="1" data-columns="group-test-col-3">Column C.1</th>
+          <th data-priority="1" data-columns="group-test-col-3">Column C.2</th>
+          <th data-priority="3" data-columns="group-test-col-4">Column D.1</th>
+          <th data-priority="3" data-columns="group-test-col-4">Column D.2</th>
+          <th data-priority="3" data-columns="group-test-col-5">Column E.1</th>
+          <th data-priority="3" data-columns="group-test-col-5">Column E.2</th>
+          <th data-priority="3" data-columns="group-test-col-6">Column F.1</th>
+          <th data-priority="3" data-columns="group-test-col-6">Column F.2</th>
+          <th data-priority="6" data-columns="group-test-col-7">Column G.1</th>
+          <th data-priority="6" data-columns="group-test-col-7">Column G.2</th>
+          <th data-priority="6" data-columns="group-test-col-8">Column H.1</th>
+          <th data-priority="6" data-columns="group-test-col-8">Column H.2</th>
+          <th data-priority="6" data-columns="group-test-col-9">Column I.1</th>
+          <th data-priority="6" data-columns="group-test-col-9">Column I.2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-columns="group-test-col-0">1</td>
+          <td data-priority="1" data-columns="group-test-col-1">Column A.1</td>
+          <td data-priority="1" data-columns="group-test-col-1">Column A.2</td>
+          <td data-priority="1" data-columns="group-test-col-2">Column B.1</td>
+          <td data-priority="1" data-columns="group-test-col-2">Column B.1</td>
+          <td data-priority="1" data-columns="group-test-col-3">Column C.1</td>
+          <td data-priority="1" data-columns="group-test-col-3">Column C.2</td>
+          <td data-priority="3" data-columns="group-test-col-4">Column D.1</td>
+          <td data-priority="3" data-columns="group-test-col-4">Column D.2</td>
+          <td data-priority="3" data-columns="group-test-col-5">Column E.1</td>
+          <td data-priority="3" data-columns="group-test-col-5">Column E.2</td>
+          <td data-priority="3" data-columns="group-test-col-6">Column F.1</td>
+          <td data-priority="3" data-columns="group-test-col-6">Column F.2</td>
+          <td data-priority="6" data-columns="group-test-col-7">Column G.1</td>
+          <td data-priority="6" data-columns="group-test-col-7">Column G.2</td>
+          <td data-priority="6" data-columns="group-test-col-8">Column H.1</td>
+          <td data-priority="6" data-columns="group-test-col-8">Column H.2</td>
+          <td data-priority="6" data-columns="group-test-col-9">Column I.1</td>
+          <td data-priority="6" data-columns="group-test-col-9">Column I.2</td>
+        </tr>
+        <tr>
+          <td data-columns="group-test-col-0">2</td>
+          <td data-priority="1" data-columns="group-test-col-1">Column A</td>
+          <td data-priority="1" data-columns="group-test-col-1">Column A</td>
+          <td data-priority="1" data-columns="group-test-col-2">Column B</td>
+          <td data-priority="1" data-columns="group-test-col-2">Column B</td>
+          <td data-priority="1" data-columns="group-test-col-3">Column C</td>
+          <td data-priority="1" data-columns="group-test-col-3">Column C</td>
+          <td data-priority="3" data-columns="group-test-col-4">Column D</td>
+          <td data-priority="3" data-columns="group-test-col-4">Column D</td>
+          <td data-priority="3" data-columns="group-test-col-5">Column E</td>
+          <td data-priority="3" data-columns="group-test-col-5">Column E</td>
+          <td data-priority="3" data-columns="group-test-col-6">Column F</td>
+          <td data-priority="3" data-columns="group-test-col-6">Column F</td>
+          <td data-priority="6" data-columns="group-test-col-7">Column G</td>
+          <td data-priority="6" data-columns="group-test-col-7">Column G</td>
+          <td data-priority="6" data-columns="group-test-col-8">Column H</td>
+          <td data-priority="6" data-columns="group-test-col-8">Column H</td>
+          <td data-priority="6" data-columns="group-test-col-9">Column I</td>
+          <td data-priority="6" data-columns="group-test-col-9">Column I</td>
+        </tr>
+        <tr>
+          <td data-columns="group-test-col-0">3</td>
+          <td data-priority="1" data-columns="group-test-col-1">Column A</td>
+          <td data-priority="1" data-columns="group-test-col-1">Column A</td>
+          <td data-priority="1" data-columns="group-test-col-2">Column B</td>
+          <td data-priority="1" data-columns="group-test-col-2">Column B</td>
+          <td data-priority="1" data-columns="group-test-col-3">Column C</td>
+          <td data-priority="1" data-columns="group-test-col-3">Column C</td>
+          <td data-priority="3" data-columns="group-test-col-4">Column D</td>
+          <td data-priority="3" data-columns="group-test-col-4">Column D</td>
+          <td data-priority="3" data-columns="group-test-col-5">Column E</td>
+          <td data-priority="3" data-columns="group-test-col-5">Column E</td>
+          <td data-priority="3" data-columns="group-test-col-6">Column F</td>
+          <td data-priority="3" data-columns="group-test-col-6">Column F</td>
+          <td data-priority="6" data-columns="group-test-col-7">Column G</td>
+          <td data-priority="6" data-columns="group-test-col-7">Column G</td>
+          <td data-priority="6" data-columns="group-test-col-8">Column H</td>
+          <td data-priority="6" data-columns="group-test-col-8">Column H</td>
+          <td data-priority="6" data-columns="group-test-col-9">Column I</td>
+          <td data-priority="6" data-columns="group-test-col-9">Column I</td>
+        </tr>
+        <tr>
+          <td data-columns="group-test-col-0">4</td>
+          <td data-priority="1" data-columns="group-test-col-1">Column A</td>
+          <td data-priority="1" data-columns="group-test-col-1">Column A</td>
+          <td data-priority="1" data-columns="group-test-col-2">Column B</td>
+          <td data-priority="1" data-columns="group-test-col-2">Column B</td>
+          <td data-priority="1" data-columns="group-test-col-3">Column C</td>
+          <td data-priority="1" data-columns="group-test-col-3">Column C</td>
+          <td data-priority="3" data-columns="group-test-col-4">Column D</td>
+          <td data-priority="3" data-columns="group-test-col-4">Column D</td>
+          <td data-priority="3" data-columns="group-test-col-5">Column E</td>
+          <td data-priority="3" data-columns="group-test-col-5">Column E</td>
+          <td data-priority="3" data-columns="group-test-col-6">Column F</td>
+          <td data-priority="3" data-columns="group-test-col-6">Column F</td>
+          <td data-priority="6" data-columns="group-test-col-7">Column G</td>
+          <td data-priority="6" data-columns="group-test-col-7">Column G</td>
+          <td data-priority="6" data-columns="group-test-col-8">Column H</td>
+          <td data-priority="6" data-columns="group-test-col-8">Column H</td>
+          <td data-priority="6" data-columns="group-test-col-9">Column I</td>
+          <td data-priority="6" data-columns="group-test-col-9">Column I</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <!-- Example code -->
+  <div class="card">
+    <div class="card-header">Example Code</div>
+    <div class="card-body">
+      <pre><code>$(".table-wrap-styles").freezeTable({
+  'headWrapStyles': {'box-shadow': '0px 9px 10px -5px rgba(159, 159, 160, 0.8)'},
+});</code></pre>
+    </div>
+  </div>
+  <!-- /Example code -->  
+
+  <br><br>
+
+  <h5>Freeze Scroll Bar Table (Fixed on the bottom of the screen)</h5>
+  <div class="table-with-scrollbar" style="">
+    <table cellspacing="0" id="tech-companies-1" class="table table-sm table-bordered table-striped" style="min-width: 1200px;">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Last Trade</th>
+          <th>Trade Time</th>
+          <th>Change</th>
+          <th>Prev Close</th>
+          <th>Open</th>
+          <th>Bid</th>
+          <th>Ask</th>
+          <th>1y Target Est</th>
+          <th>Lorem</th>
+          <th>Ipsum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <!-- Repeat -->
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <!-- Repeat -->
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <!-- Repeat -->
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <!-- Repeat -->
+        <tr>
+          <th>GOOG <span class="co-name">Google Inc.</span></th>
+          <td>597.74</td>
+          <td>12:12PM</td>
+          <td>14.81 (2.54%)</td>
+          <td>582.93</td>
+          <td>597.95</td>
+          <td>597.73 x 100</td>
+          <td>597.91 x 300</td>
+          <td>731.10</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AAPL <span class="co-name">Apple Inc.</span></th>
+          <td>378.94</td>
+          <td>12:22PM</td>
+          <td>5.74 (1.54%)</td>
+          <td>373.20</td>
+          <td>381.02</td>
+          <td>378.92 x 300</td>
+          <td>378.99 x 100</td>
+          <td>505.94</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>AMZN <span class="co-name">Amazon.com Inc.</span></th>
+          <td>191.55</td>
+          <td>12:23PM</td>
+          <td>3.16 (1.68%)</td>
+          <td>188.39</td>
+          <td>194.99</td>
+          <td>191.52 x 300</td>
+          <td>191.58 x 100</td>
+          <td>240.32</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>ORCL <span class="co-name">Oracle Corporation</span></th>
+          <td>31.15</td>
+          <td>12:44PM</td>
+          <td>1.41 (4.72%)</td>
+          <td>29.74</td>
+          <td>30.67</td>
+          <td>31.14 x 6500</td>
+          <td>31.15 x 3200</td>
+          <td>36.11</td>
+          <td>Spanning cell</td>
+        </tr>
+        <tr>
+          <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
+          <td>25.50</td>
+          <td>12:27PM</td>
+          <td>0.66 (2.67%)</td>
+          <td>24.84</td>
+          <td>25.37</td>
+          <td>25.50 x 71100</td>
+          <td>25.51 x 17800</td>
+          <td>31.50</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
+          <td>18.65</td>
+          <td>12:45PM</td>
+          <td>0.97 (5.49%)</td>
+          <td>17.68</td>
+          <td>18.23</td>
+          <td>18.65 x 10300</td>
+          <td>18.66 x 24000</td>
+          <td>21.12</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+        <tr>
+          <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
+          <td>15.81</td>
+          <td>12:25PM</td>
+          <td>0.11 (0.67%)</td>
+          <td>15.70</td>
+          <td>15.94</td>
+          <td>15.79 x 6100</td>
+          <td>15.80 x 17000</td>
+          <td>18.16</td>
+          <td>Non-spanning</td>
+          <td>Non-spanning</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <!-- Example code -->
+  <div class="card">
+    <div class="card-header">Example Code</div>
+    <div class="card-body">
+      <pre><code>$(".table-with-scrollbar").freezeTable({
+  'scrollBar': true,
+});</code></pre>
+    </div>
+  </div>
+  <!-- /Example code -->  
+  
+
+  <footer class="footer">
+    <p>&copy; <a class="" href="https://github.com/yidas/jquery-freeze-table">GitHub yidas/jquery-freeze-table</a></p>
+  </footer>
+
+</div> <!-- /container -->
+  
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="dist/js/freeze-table.js"></script>
+<script>
+$(document).ready(function() {
+
+  $(".table-basic").freezeTable();
+
+  $(".table-columns-only").freezeTable({
+    'freezeHead': false,
+  });
+
+  $(".table-head-only").freezeTable({
+    'freezeColumn': false,
+  });
+
+  // 2 Columns to be fixed
+  $(".table-multi-columns").freezeTable({
+    'columnNum' : 2,
+  });
+
+  // Shadow enabled
+  $(".table-shadow").freezeTable({
+    'shadow' : true,
+  });
+
+  // Customized styles
+  $(".table-wrap-styles").freezeTable({
+    'headWrapStyles': {'box-shadow': '0px 9px 10px -5px rgba(159, 159, 160, 0.8)'},
+  });
+
+  $(".table-with-scrollbar").freezeTable({
+    'scrollBar': true,
+  });
+});
+</script>
+</body>
+</html>
