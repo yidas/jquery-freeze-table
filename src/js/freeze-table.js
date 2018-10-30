@@ -38,6 +38,8 @@
       }
       if (freezeColumn) {
         buildColumnTable();
+        // X scroll bar
+        $tableWrapper.css('overflow-x', 'scroll');
       }
 
       // Initialization
