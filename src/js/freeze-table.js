@@ -3,6 +3,7 @@
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
  * @version 0.1.0
+ * @see     https://github.com/yidas/js-freeze-table
  */
 
 (function ($, window) {
