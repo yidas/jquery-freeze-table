@@ -25,6 +25,16 @@ This library requires the following:
 INSTALLATION
 ------------
 
+### Bower Installation
+
+```
+bower install freeze-table
+```
+
+> You could also download `dist` assets for including
+
+### Assets include
+
 Add JavaScript file either to the `<head>`, or to the bottom of `<body>`
 
 ```html
