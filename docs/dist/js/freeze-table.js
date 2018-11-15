@@ -2,7 +2,7 @@
  * RWD Table with freezing head and columns for jQuery
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
- * @version 1.0.0
+ * @version 1.1.0
  * @see     https://github.com/yidas/jquery-freeze-table
  */
 (function ($, window) {
