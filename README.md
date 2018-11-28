@@ -54,7 +54,7 @@ REQUIREMENTS
 ------------
 This library requires the following:
 
-- jQuery 1.11.0+
+- jQuery 1.11.0+ | 2.0+ | 3.0+
 
 ---
 

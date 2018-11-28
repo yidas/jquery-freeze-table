@@ -2,7 +2,7 @@
  * RWD Table with freezing head and columns for jQuery
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
- * @version 1.0.0
+ * @version 1.1.1
  * @see     https://github.com/yidas/jquery-freeze-table
  */
 (function ($, window) {
@@ -93,7 +93,7 @@
     this.backgroundColor = options.backgroundColor || 'white';
 
     // Get navbar height for keeping fixed navbar
-    this.fixedNavbarHeight = (fixedNavbar) ? $(fixedNavbar).outerHeight() : 0;
+    this.fixedNavbarHeight = (fixedNavbar) ? $(fixedNavbar).outerHeight() || 0 : 0;
     
     // Check existence
     if (this.isInit()) {
