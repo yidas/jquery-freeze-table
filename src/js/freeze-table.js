@@ -2,7 +2,7 @@
  * RWD Table with freezing head and columns for jQuery
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
- * @version 1.1.1
+ * @version 1.1.2
  * @see     https://github.com/yidas/jquery-freeze-table
  */
 (function ($, window) {
@@ -99,6 +99,11 @@
     if (this.isInit()) {
       this.destroy();
     }
+
+    // Release height of the table wrapper 
+    this.$tableWrapper.css('height', '100%')
+      .css('min-height', '100%')
+      .css('max-height', '100%');
 
     /**
      * Building
