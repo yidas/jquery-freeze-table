@@ -6,8 +6,9 @@
     <br>
 </p>
 
-[![npm version](https://badge.fury.io/js/jquery-freeze-table.svg)](https://badge.fury.io/js/jquery-freeze-table)
+[![npm version](https://img.shields.io/npm/v/jquery-freeze-table.svg)](https://www.npmjs.com/package/jquery-freeze-table)
 [![Bower version](https://badge.fury.io/bo/jquery-freeze-table.svg)](https://badge.fury.io/bo/jquery-freeze-table)
+[![License](https://img.shields.io/github/license/yidas/jquery-freeze-table.svg)](https://github.com/yidas/jquery-freeze-table/blob/master/LICENSE)
 
 RWD Table with freezing head and columns for jQuery
 
@@ -67,14 +68,14 @@ INSTALLATION
 bower install jquery-freeze-table
 ```
 
-> You could also download by NPM or directly copy `dist` assets.
+> You could also download by NPM or directly copy [`dist`](https://github.com/yidas/jquery-freeze-table/tree/master/dist) assets.
 
 ### Assets include
 
 Add JavaScript file either to the `<head>`, or to the bottom of `<body>`
 
 ```html
-<script type="text/javascript" src="js/freeze-table.js"></script>
+<script type="text/javascript" src="dist/js/freeze-table.js"></script>
 ```
 
 ### Markup
@@ -231,8 +232,9 @@ Destroy Freeze Table by same namespace
 
 Unbind all events by same namespace
 
+---
 
-
+Finally, I hope that you guys will like this library and enjoy it, and I want to thanks for all your [RECOMMENDATIONS](https://github.com/yidas/jquery-freeze-table/blob/master/RECOMMENDATIONS.md).
 
 
 
