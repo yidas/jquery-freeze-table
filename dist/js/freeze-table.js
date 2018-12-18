@@ -2,7 +2,7 @@
  * RWD Table with freezing head and columns for jQuery
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
- * @version 1.1.2
+ * @version 1.1.4
  * @see     https://github.com/yidas/jquery-freeze-table
  */
 (function ($, window) {
@@ -32,7 +32,10 @@
     this.$table = this.$tableWrapper.children("table");
     this.$headTableWrap;
     this.$columnTableWrap;
+    this.$columnHeadTableWrap;
+    this.$scrollBarWrap;
     this.fixedNavbarHeight;
+    this.isWindowScrollX = false;
     
     // Static class names for clone wraps
     this.headWrapClass = 'clone-head-table-wrap';
@@ -126,6 +129,38 @@
     if (scrollBar) {
       this.buildScrollBar();
     }
+
+    // Body scroll-x prevention
+    var detectWindowScroll = (function (){
+      // If body scroll-x is opened, close library to prevent Invalid usage
+      if ($(window).scrollLeft() > 0) {
+        // Mark
+        this.isWindowScrollX = true;
+        // Hide all components
+        if (this.$headTableWrap) {
+          this.$headTableWrap.css('visibility', 'hidden');
+        }
+        if (this.$columnTableWrap) {
+          this.$columnTableWrap.css('visibility', 'hidden');
+        }
+        if (this.$columnHeadTableWrap) {
+          this.$columnHeadTableWrap.css('visibility', 'hidden');
+        }
+        if (this.$scrollBarWrap) {
+          this.$scrollBarWrap.css('visibility', 'hidden');
+        }
+
+      } else {
+        // Unmark
+        this.isWindowScrollX = false;
+      }
+
+    }).bind(this);
+    // Listener of Body scroll-x prevention
+    $(window).on('scroll.'+this.namespace, function () {
+
+      detectWindowScroll();
+    });
 
     // Initialization
     this.resize();
@@ -263,6 +298,10 @@
      */
     this.$tableWrapper.on('scroll.'+this.namespace, function() {
 
+      // Disable while isWindowScrollX
+      if (that.isWindowScrollX)
+        return;
+
       // Detect for horizontal scroll
       if ($(this).scrollLeft() > 0) {
 
@@ -315,31 +354,31 @@
     var that = this;
 
     // Clone head table wrap
-    var $columnHeadTableWrap = this.clone(this.$headTableWrap);
+    this.$columnHeadTableWrap = this.clone(this.$headTableWrap);
 
     // Fast Mode
     if (this.fastMode) {
-      var $columnHeadTableWrap = this.simplifyHead($columnHeadTableWrap);
+      this.$columnHeadTableWrap = this.simplifyHead(this.$columnHeadTableWrap);
     }
 
     var columnHeadWrapStyles = this.options.columnHeadWrapStyles || null;
 
-    $columnHeadTableWrap.removeClass(this.namespace)
+    this.$columnHeadTableWrap.removeClass(this.namespace)
       .addClass(this.columnHeadWrapClass)
       .css('z-index', 3);
     // Shadow option
     if (this.shadow) {
-      $columnHeadTableWrap.css('box-shadow', 'none');
+      this.$columnHeadTableWrap.css('box-shadow', 'none');
     }
     // Styles option
     if (columnHeadWrapStyles && typeof columnHeadWrapStyles === "object") {
       $.each(columnHeadWrapStyles, function(key, value) {
-        $columnHeadTableWrap.css(key, value);
+        this.$columnHeadTableWrap.css(key, value);
       });
     }
 
     // Add into target table wrap
-    this.$tableWrapper.append($columnHeadTableWrap);
+    this.$tableWrapper.append(this.$columnHeadTableWrap);
 
     /**
      * Detect column-head wrap to show or not
@@ -353,11 +392,11 @@
       // Plus tableWrapper scroll detection
       if (that.$table.offset().top - 1 <= topPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= topPosition && that.$tableWrapper.scrollLeft() > 0) {
 
-        $columnHeadTableWrap.css('visibility', 'visible');
+        that.$columnHeadTableWrap.css('visibility', 'visible');
 
       } else {
 
-        $columnHeadTableWrap.css('visibility', 'hidden');
+        that.$columnHeadTableWrap.css('visibility', 'hidden');
       }
     }
 
@@ -374,6 +413,10 @@
      */
     this.$tableWrapper.on('scroll.'+this.namespace, function() {
 
+      // Disable while isWindowScrollX
+      if (that.isWindowScrollX)
+        return;
+
       detect();
     });
 
@@ -383,9 +426,9 @@
     $(window).on('resize.'+this.namespace, function() {
 
       // Table synchronism
-      $columnHeadTableWrap.find("> table").css('width', that.$table.width());
-      $columnHeadTableWrap.css('width', that.$columnTableWrap.width());
-      $columnHeadTableWrap.css('height', that.$table.find("thead").outerHeight());
+      that.$columnHeadTableWrap.find("> table").css('width', that.$table.width());
+      that.$columnHeadTableWrap.css('width', that.$columnTableWrap.width());
+      that.$columnHeadTableWrap.css('height', that.$table.find("thead").outerHeight());
     });
   }
 
@@ -404,7 +447,7 @@
       .css('height', 1);
     
     // Wrap the Fixed Column table
-    var $scrollBarWrap = $('<div class="'+this.scrollBarWrapClass+'"></div>')
+    this.$scrollBarWrap = $('<div class="'+this.scrollBarWrapClass+'"></div>')
       .css('position', 'fixed')
       .css('overflow-x', 'scroll')
       .css('visibility', 'hidden')
@@ -414,13 +457,13 @@
       .css('height', 20);
 
     // Add into target table wrap
-    $scrollBarWrap.append($scrollBarContainer);
-    this.$tableWrapper.append($scrollBarWrap);
+    this.$scrollBarWrap.append($scrollBarContainer);
+    this.$tableWrapper.append(this.$scrollBarWrap);
 
     /**
      * Listener - Freeze scroll bar effected Table
      */
-    $scrollBarWrap.on('scroll.'+this.namespace, function() {
+    this.$scrollBarWrap.on('scroll.'+this.namespace, function() {
 
       that.$tableWrapper.scrollLeft($(this).scrollLeft());
     });
@@ -431,7 +474,7 @@
     this.$tableWrapper.on('scroll.'+this.namespace, function() {
 
       // this.$headTableWrap.css('left', $table.offset().left);
-      $scrollBarWrap.scrollLeft($(this).scrollLeft());
+      that.$scrollBarWrap.scrollLeft($(this).scrollLeft());
     });
 
     /**
@@ -445,11 +488,11 @@
       // Detect Current container's top is in the table scope
       if (that.$table.offset().top - 1 <= bottomPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= bottomPosition) {
 
-        $scrollBarWrap.css('visibility', 'visible');
+        that.$scrollBarWrap.css('visibility', 'visible');
 
       } else {
 
-        $scrollBarWrap.css('visibility', 'hidden');
+        that.$scrollBarWrap.css('visibility', 'hidden');
       }
     });
 
@@ -461,7 +504,7 @@
       // Update width
       $scrollBarContainer.css('width', that.$table.width())
       // Update Wrap
-      $scrollBarWrap.css('width', that.$tableWrapper.width());
+      that.$scrollBarWrap.css('width', that.$tableWrapper.width());
     });
   }
 

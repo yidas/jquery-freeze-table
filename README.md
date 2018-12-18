@@ -7,7 +7,6 @@
 </p>
 
 [![npm version](https://img.shields.io/npm/v/jquery-freeze-table.svg)](https://www.npmjs.com/package/jquery-freeze-table)
-[![Bower version](https://badge.fury.io/bo/jquery-freeze-table.svg)](https://badge.fury.io/bo/jquery-freeze-table)
 [![License](https://img.shields.io/github/license/yidas/jquery-freeze-table.svg)](https://github.com/yidas/jquery-freeze-table/blob/master/LICENSE)
 
 RWD Table with freezing head and columns for jQuery
