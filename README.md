@@ -133,6 +133,7 @@ Options could be passed via JavaScript with object.
 |fixedNavbar  |string  |'.navbar-fixed-top'|Fixed navbar deviation consideration. **Example**: `'#navbar'`|
 |namespace    |string  |'freeze-table'     |Table namespace for unbind|
 |columnNum    |integer |1                  |The number of column(s) for freeze|
+|columnKeep   |boolean |false              |Freeze column(s) will always be displayed to support interactive table|
 |columnBorderWidth|interger|1              |The addon border width for freeze column(s)|
 |columnWrapStyles |object  |null           |Customized CSS styles for freeze column(s) wrap. `{'style': 'value'}`| 
 |headWrapStyles   |object  |null           |Customized CSS styles for freeze head(s) wrap. `{'style': 'value'}`| 
@@ -235,6 +236,9 @@ Unbind all events by same namespace
 
 Finally, I hope that you guys will like this library and enjoy it, and I want to thanks for all your [RECOMMENDATIONS](https://github.com/yidas/jquery-freeze-table/blob/master/RECOMMENDATIONS.md).
 
+Other kit reference:
+
+- [jquery-reflow-table](https://github.com/yidas/jquery-reflow-table) - RWD reflow table switch for mobile UI/UX by collapsing columns
 
 
 

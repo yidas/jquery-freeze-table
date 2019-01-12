@@ -2,7 +2,7 @@
  * RWD Table with freezing head and columns for jQuery
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
- * @version 1.1.4
+ * @version 1.1.5
  * @see     https://github.com/yidas/jquery-freeze-table
  */
 (function ($, window) {
@@ -258,6 +258,7 @@
      */
     var columnWrapStyles = this.options.columnWrapStyles || null;
     var columnNum = this.options.columnNum || 1;
+    var columnKeep = (typeof this.options.columnKeep !== 'undefined') ? this.options.columnKeep : false;
       // Shadow option
       var defaultColumnBorderWidth = (this.shadow) ? 0 : 1;
       var columnBorderWidth = (typeof this.options.columnBorderWidth !== 'undefined') ? this.options.columnBorderWidth : defaultColumnBorderWidth;
@@ -293,25 +294,33 @@
       that.$columnTableWrap.css('top', that.$table.offset().top - $(window).scrollTop());
     }
 
-    /**
-     * Listener - Table scroll for effecting Freeze Column
-     */
-    this.$tableWrapper.on('scroll.'+this.namespace, function() {
+    // Column keep option
+    if (columnKeep) {
 
-      // Disable while isWindowScrollX
-      if (that.isWindowScrollX)
-        return;
+      this.$columnTableWrap.css('visibility', 'visible');
 
-      // Detect for horizontal scroll
-      if ($(this).scrollLeft() > 0) {
+    } else {
 
-        that.$columnTableWrap.css('visibility', 'visible');
+      /**
+       * Listener - Table scroll for effecting Freeze Column
+       */
+      this.$tableWrapper.on('scroll.'+this.namespace, function() {
 
-      } else {
+        // Disable while isWindowScrollX
+        if (that.isWindowScrollX)
+          return;
 
-        that.$columnTableWrap.css('visibility', 'hidden');
-      }
-    });
+        // Detect for horizontal scroll
+        if ($(this).scrollLeft() > 0) {
+
+          that.$columnTableWrap.css('visibility', 'visible');
+
+        } else {
+
+          that.$columnTableWrap.css('visibility', 'hidden');
+        }
+      });
+    }
 
     /**
      * Listener - Window resize for effecting tables
