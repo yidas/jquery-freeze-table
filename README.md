@@ -140,7 +140,7 @@ Options could be passed via JavaScript with object.
 |columnHeadWrapStyles|object|null          |Customized CSS styles for freeze column-head wrap. `{'style': 'value'}`| 
 |callback     |function|null               |Plugin after initialization callback function|
 |shadow       |boolean |false              |Enable default `box-shadow` UI|
-|backgroundColor  |string  |'white'        |Default table background color for Boostrap transparent UI. `white`, `#FFFFFF`, `rgb(255,255,255,1)`|
+|backgroundColor  |string\|boolean  |'white'        |Default table background color for Boostrap transparent UI. `white`, `#FFFFFF`, `rgb(255,255,255,1)`, or `false` to skip.|
 
 ---
 

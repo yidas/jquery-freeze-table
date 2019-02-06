@@ -2,7 +2,7 @@
  * RWD Table with freezing head and columns for jQuery
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
- * @version 1.1.5
+ * @version 1.1.6
  * @see     https://github.com/yidas/jquery-freeze-table
  */
 (function ($, window) {
@@ -93,7 +93,7 @@
     this.namespace = this.options.namespace || this.namespace;
     this.shadow = (typeof options.shadow !== 'undefined') ? options.shadow : false;
     this.fastMode = (typeof options.fastMode !== 'undefined') ? options.fastMode : false;
-    this.backgroundColor = options.backgroundColor || 'white';
+    this.backgroundColor = (typeof options.backgroundColor !== 'undefined') ? options.backgroundColor : 'white';
 
     // Get navbar height for keeping fixed navbar
     this.fixedNavbarHeight = (fixedNavbar) ? $(fixedNavbar).outerHeight() || 0 : 0;
@@ -524,9 +524,15 @@
    */
   FreezeTable.prototype.clone = function (element) {
 
-    return $(element).clone()
+    var $clone = $(element).clone()
       .removeAttr('id') // Remove ID
-      .css('background-color', this.backgroundColor); // Bootstrap background-color transparent problem
+
+    // Bootstrap background-color transparent problem
+    if (this.backgroundColor) {
+      $clone.css('background-color', this.backgroundColor);
+    }
+
+    return $clone;
   }
 
   /**
