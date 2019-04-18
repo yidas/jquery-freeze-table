@@ -24,9 +24,11 @@
     this.options = options || {}; 
     this.namespace = this.options.namespace || 'freeze-table';
     this.callback;
+    this.scrollBarHeight;
     this.shadow;
     this.fastMode;
     this.backgroundColor;
+    this.scrollable;
 
     // Caches
     this.$table = this.$tableWrapper.children("table");
@@ -91,9 +93,12 @@
     var fixedNavbar = options.fixedNavbar || '.navbar-fixed-top';
     var callback = options.callback || null;
     this.namespace = this.options.namespace || this.namespace;
+    // Default to get window scroll bar height
+    this.scrollBarHeight = ($.isNumeric(options.scrollBarHeight)) ? options.scrollBarHeight : (window.innerWidth - document.documentElement.clientWidth);
     this.shadow = (typeof options.shadow !== 'undefined') ? options.shadow : false;
     this.fastMode = (typeof options.fastMode !== 'undefined') ? options.fastMode : false;
     this.backgroundColor = (typeof options.backgroundColor !== 'undefined') ? options.backgroundColor : 'white';
+    this.scrollable = (typeof options.scrollable !== 'undefined') ? options.scrollable : false;
 
     // Get navbar height for keeping fixed navbar
     this.fixedNavbarHeight = (fixedNavbar) ? $(fixedNavbar).outerHeight() || 0 : 0;
@@ -104,9 +109,11 @@
     }
 
     // Release height of the table wrapper 
-    this.$tableWrapper.css('height', '100%')
-      .css('min-height', '100%')
-      .css('max-height', '100%');
+    if (!this.scrollable) {
+      this.$tableWrapper.css('height', '100%')
+        .css('min-height', '100%')
+        .css('max-height', '100%');
+    }
 
     /**
      * Building
@@ -217,31 +224,69 @@
       that.$headTableWrap.scrollLeft($(this).scrollLeft());
     });
 
-    /**
-     * Listener - Window scroll for effecting freeze head table
-     */
-    $(window).on('scroll.'+this.namespace, function() {
+    // Scrollable option
+    if (this.scrollable) {
 
-      // Current container's top position
-      var topPosition = $(window).scrollTop() + that.fixedNavbarHeight;
-      
-      // Detect Current container's top is in the table scope
-      if (that.$table.offset().top - 1 <= topPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= topPosition) {
+      var handler = function (window, that) {
 
-        that.$headTableWrap.css('visibility', 'visible');
+        var top = that.$tableWrapper.offset().top;
+        
+        // Detect Current container's top is in the table scope
+        if (that.$tableWrapper.scrollTop() > 0 && top > that.fixedNavbarHeight) {
 
-      } else {
+          that.$headTableWrap.offset({top: top});
+          that.$headTableWrap.css('visibility', 'visible');
 
-        that.$headTableWrap.css('visibility', 'hidden');
+        } else {
+
+          that.$headTableWrap.css('visibility', 'hidden');
+        }
       }
-    });
+
+      /**
+       * Listener - Window scroll for effecting freeze head table
+       */
+      $(this.$tableWrapper).on('scroll.'+this.namespace, function() {
+        
+        handler(window, that);
+      });
+
+      $(window).on('scroll.'+this.namespace, function() {
+
+        handler(window, that);
+      });
+      
+    } else {
+
+      /**
+       * Listener - Window scroll for effecting freeze head table
+       */
+      $(window).on('scroll.'+this.namespace, function() {
+
+        // Current container's top position
+        var topPosition = $(window).scrollTop() + that.fixedNavbarHeight;
+        
+        // Detect Current container's top is in the table scope
+        if (that.$table.offset().top - 1 <= topPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= topPosition) {
+
+          that.$headTableWrap.css('visibility', 'visible');
+
+        } else {
+
+          that.$headTableWrap.css('visibility', 'hidden');
+        }
+      });
+    }
 
     /**
      * Listener - Window resize for effecting freeze head table
      */
     $(window).on('resize.'+this.namespace, function() {
 
-      that.$headTableWrap.css('width', that.$tableWrapper.width());
+      // Scrollable check and prevention
+      var headTableWrapWidth = (that.scrollable) ? that.$tableWrapper.width() - that.scrollBarHeight : that.$tableWrapper.width();
+      headTableWrapWidth = (headTableWrapWidth > 0) ? headTableWrapWidth : that.$tableWrapper.width();
+      that.$headTableWrap.css('width', headTableWrapWidth);
       that.$headTableWrap.css('height', that.$table.find("thead").outerHeight());
     });
   }
@@ -283,15 +328,32 @@
         that.$columnTableWrap.css(key, value);
       });
     }
+    // Scrollable
+    if (this.scrollable) {
+      // Scrollable check and prevention
+      var columnTableWrapHeight = this.$tableWrapper.height() - this.scrollBarHeight;
+      columnTableWrapHeight = (columnTableWrapHeight > 0) ? columnTableWrapHeight : this.$tableWrapper.height();
+      this.$columnTableWrap.height(columnTableWrapHeight);
+    }
     // Add into target table wrap
     this.$tableWrapper.append(this.$columnTableWrap);
 
     /**
-     * Align the column wrap to current top
+     * localize the column wrap to current top
      */
-    var align = function () {
+    if (that.scrollable) {
 
-      that.$columnTableWrap.css('top', that.$table.offset().top - $(window).scrollTop());
+      var localizeWrap = function () {
+
+        that.$columnTableWrap.offset({top: that.$tableWrapper.offset().top});
+      }
+
+    } else {
+
+      var localizeWrap = function () {
+
+        that.$columnTableWrap.css('top', that.$table.offset().top - $(window).scrollTop());
+      }
     }
 
     // Column keep option
@@ -301,25 +363,50 @@
 
     } else {
 
-      /**
-       * Listener - Table scroll for effecting Freeze Column
-       */
-      this.$tableWrapper.on('scroll.'+this.namespace, function() {
+      // Scrollable option
+      if (that.scrollable) {
 
-        // Disable while isWindowScrollX
-        if (that.isWindowScrollX)
-          return;
+        /**
+         * Listener - Table scroll for effecting Freeze Column
+         */
+        this.$tableWrapper.on('scroll.'+this.namespace, function() {
 
-        // Detect for horizontal scroll
-        if ($(this).scrollLeft() > 0) {
 
-          that.$columnTableWrap.css('visibility', 'visible');
+          // Detect for horizontal scroll
+          if ($(this).scrollLeft() > 0) {
 
-        } else {
+            // Scrollable localization
+            that.$columnTableWrap.scrollTop(that.$tableWrapper.scrollTop());
+            that.$columnTableWrap.css('visibility', 'visible');
 
-          that.$columnTableWrap.css('visibility', 'hidden');
-        }
-      });
+          } else {
+
+            that.$columnTableWrap.css('visibility', 'hidden');
+          }
+        });
+
+      } else {
+
+        /**
+         * Listener - Table scroll for effecting Freeze Column
+         */
+        this.$tableWrapper.on('scroll.'+this.namespace, function() {
+
+          // Disable while isWindowScrollX
+          if (that.isWindowScrollX)
+            return;
+
+          // Detect for horizontal scroll
+          if ($(this).scrollLeft() > 0) {
+
+            that.$columnTableWrap.css('visibility', 'visible');
+
+          } else {
+
+            that.$columnTableWrap.css('visibility', 'hidden');
+          }
+        });
+      }
     }
 
     /**
@@ -343,7 +430,7 @@
       }
       that.$columnTableWrap.width(width);
 
-      align();
+      localizeWrap();
     });
 
     /**
@@ -351,7 +438,7 @@
      */
     $(window).on('scroll.'+this.namespace, function() {
 
-      align();
+      localizeWrap();
     });
   }
 
@@ -389,23 +476,53 @@
     // Add into target table wrap
     this.$tableWrapper.append(this.$columnHeadTableWrap);
 
-    /**
-     * Detect column-head wrap to show or not
-     */
-    var detect = function () {
+    // Scrollable option
+    if (this.scrollable) {
 
-      // Current container's top position
-      var topPosition = $(window).scrollTop() + that.fixedNavbarHeight;
+      var detect = function () {
+
+        var top = that.$tableWrapper.offset().top;
+        
+        // Detect Current container's top is in the table scope
+        if (that.$tableWrapper.scrollTop() > 0 && top > that.fixedNavbarHeight) {
+
+          that.$columnHeadTableWrap.offset({top: top});
+          that.$columnHeadTableWrap.css('visibility', 'visible');
+
+        } else {
+
+          that.$columnHeadTableWrap.css('visibility', 'hidden');
+        }
+      }
+
+      /**
+       * Listener - Window scroll for effecting freeze head table
+       */
+      $(this.$tableWrapper).on('scroll.'+this.namespace, function() {
+        
+        detect();
+      });
       
-      // Detect Current container's top is in the table scope
-      // Plus tableWrapper scroll detection
-      if (that.$table.offset().top - 1 <= topPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= topPosition && that.$tableWrapper.scrollLeft() > 0) {
+    } else {
 
-        that.$columnHeadTableWrap.css('visibility', 'visible');
+      /**
+       * Detect column-head wrap to show or not
+       */
+      var detect = function () {
 
-      } else {
+        // Current container's top position
+        var topPosition = $(window).scrollTop() + that.fixedNavbarHeight;
+        
+        // Detect Current container's top is in the table scope
+        // Plus tableWrapper scroll detection
+        if (that.$table.offset().top - 1 <= topPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= topPosition && that.$tableWrapper.scrollLeft() > 0) {
 
-        that.$columnHeadTableWrap.css('visibility', 'hidden');
+          that.$columnHeadTableWrap.css('visibility', 'visible');
+
+        } else {
+
+          that.$columnHeadTableWrap.css('visibility', 'hidden');
+        }
       }
     }
 
@@ -463,7 +580,7 @@
       .css('bottom', 0)
       .css('z-index', 2)
       .css('width', this.$tableWrapper.width())
-      .css('height', 20);
+      .css('height', this.scrollBarHeight);
 
     // Add into target table wrap
     this.$scrollBarWrap.append($scrollBarContainer);

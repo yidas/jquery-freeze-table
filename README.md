@@ -129,8 +129,9 @@ Options could be passed via JavaScript with object.
 |freezeHead   |boolean |true               |Enable to freeze `<thead>`|
 |freezeColumn |boolean |true               |Enable to freeze column(s)|
 |freezeColumnHead|boolean |true            |Enable to freeze column(s) head (Entire column)|
-|scrollBar    |boolean |false               |Enable fixed scrollBar for X axis|
+|scrollBar    |boolean |false              |Enable fixed scrollBar for X axis|
 |fixedNavbar  |string  |'.navbar-fixed-top'|Fixed navbar deviation consideration. **Example**: `'#navbar'`|
+|scrollable   |boolean |false              |Enable Scrollable mode for inner scroll x/y axises|
 |namespace    |string  |'freeze-table'     |Table namespace for unbind|
 |columnNum    |integer |1                  |The number of column(s) for freeze|
 |columnKeep   |boolean |false              |Freeze column(s) will always be displayed to support interactive table|
