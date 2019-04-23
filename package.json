@@ -1,7 +1,7 @@
 {
   "name": "jquery-freeze-table",
   "description": "RWD Table with freezing head and columns for jQuery",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "keywords": [
     "RWD",
     "responsive",
