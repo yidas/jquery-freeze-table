@@ -130,9 +130,10 @@ Options could be passed via JavaScript with object.
 |freezeColumn |boolean |true               |Enable to freeze column(s)|
 |freezeColumnHead|boolean |true            |Enable to freeze column(s) head (Entire column)|
 |scrollBar    |boolean |false              |Enable fixed scrollBar for X axis|
-|fixedNavbar  |string  |'.navbar-fixed-top'|Fixed navbar deviation consideration. **Example**: `'#navbar'`|
+|fixedNavbar  |string\|jQuery\|Element |'.navbar-fixed-top'|Fixed navbar deviation consideration. **Example**: `'#navbar'`|
 |scrollable   |boolean |false              |Enable Scrollable mode for inner scroll x/y axises|
 |namespace    |string  |'freeze-table'     |Table namespace for unbind|
+|container  |string\|jQuery\|Element |false|Specify a document role element that contains the table. Default container is `window`. This option is particularly useful in that it allows you to position the table in the flow of the document near the triggering element - which will make the freeze table support in containers such as Bootstrap Modal. **Example**: `'#myModal'`|
 |columnNum    |integer |1                  |The number of column(s) for freeze|
 |columnKeep   |boolean |false              |Freeze column(s) will always be displayed to support interactive table|
 |columnBorderWidth|interger|1              |The addon border width for freeze column(s)|

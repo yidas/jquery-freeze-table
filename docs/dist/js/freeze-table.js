@@ -2,7 +2,7 @@
  * RWD Table with freezing head and columns for jQuery
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
- * @version 1.1.6
+ * @version 1.2.0
  * @see     https://github.com/yidas/jquery-freeze-table
  */
 (function ($, window) {
@@ -32,6 +32,7 @@
 
     // Caches
     this.$table = this.$tableWrapper.children("table");
+    this.$container;
     this.$headTableWrap;
     this.$columnTableWrap;
     this.$columnHeadTableWrap;
@@ -102,6 +103,8 @@
 
     // Get navbar height for keeping fixed navbar
     this.fixedNavbarHeight = (fixedNavbar) ? $(fixedNavbar).outerHeight() || 0 : 0;
+    // Container setting
+    this.$container = ((typeof options.container !== 'undefined') && options.container && $(options.container).length) ? $(options.container) : $(window);
     
     // Check existence
     if (this.isInit()) {
@@ -140,7 +143,7 @@
     // Body scroll-x prevention
     var detectWindowScroll = (function (){
       // If body scroll-x is opened, close library to prevent Invalid usage
-      if ($(window).scrollLeft() > 0) {
+      if (this.$container.scrollLeft() > 0) {
         // Mark
         this.isWindowScrollX = true;
         // Hide all components
@@ -164,7 +167,7 @@
 
     }).bind(this);
     // Listener of Body scroll-x prevention
-    $(window).on('scroll.'+this.namespace, function () {
+    this.$container.on('scroll.'+this.namespace, function () {
 
       detectWindowScroll();
     });
@@ -246,29 +249,55 @@
       /**
        * Listener - Window scroll for effecting freeze head table
        */
-      $(this.$tableWrapper).on('scroll.'+this.namespace, function() {
+      this.$tableWrapper.on('scroll.'+this.namespace, function() {
         
         handler(window, that);
       });
 
-      $(window).on('scroll.'+this.namespace, function() {
+      this.$container.on('scroll.'+this.namespace, function() {
 
         handler(window, that);
       });
       
-    } else {
+    } 
+    // Default with window container
+    else if ($.isWindow(that.$container.get(0))) {
 
       /**
        * Listener - Window scroll for effecting freeze head table
        */
-      $(window).on('scroll.'+this.namespace, function() {
+      this.$container.on('scroll.'+this.namespace, function() {
 
         // Current container's top position
-        var topPosition = $(window).scrollTop() + that.fixedNavbarHeight;
+        var topPosition = that.$container.scrollTop() + that.fixedNavbarHeight;
+        var tableTop = that.$table.offset().top - 1;
         
         // Detect Current container's top is in the table scope
-        if (that.$table.offset().top - 1 <= topPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= topPosition) {
+        if (tableTop - 1 <= topPosition && (tableTop + that.$table.outerHeight() - 1) >= topPosition) {
 
+          that.$headTableWrap.css('visibility', 'visible');
+
+        } else {
+
+          that.$headTableWrap.css('visibility', 'hidden');
+        }
+      });
+    }
+    // Container setting
+    else {
+
+      /**
+       * Listener - Window scroll for effecting freeze head table
+       */
+      this.$container.on('scroll.'+this.namespace, function() {
+
+        var windowTop = $(window).scrollTop();
+        var tableTop = that.$table.offset().top - 1;
+
+        // Detect Current container's top is in the table scope
+        if (tableTop <= windowTop && (tableTop + that.$table.outerHeight() - 1) >= windowTop) {
+
+          that.$headTableWrap.offset({top: windowTop});
           that.$headTableWrap.css('visibility', 'visible');
 
         } else {
@@ -281,7 +310,7 @@
     /**
      * Listener - Window resize for effecting freeze head table
      */
-    $(window).on('resize.'+this.namespace, function() {
+    this.$container.on('resize.'+this.namespace, function() {
 
       // Scrollable check and prevention
       var headTableWrapWidth = (that.scrollable) ? that.$tableWrapper.width() - that.scrollBarHeight : that.$tableWrapper.width();
@@ -341,19 +370,9 @@
     /**
      * localize the column wrap to current top
      */
-    if (that.scrollable) {
+    var localizeWrap = function () {
 
-      var localizeWrap = function () {
-
-        that.$columnTableWrap.offset({top: that.$tableWrapper.offset().top});
-      }
-
-    } else {
-
-      var localizeWrap = function () {
-
-        that.$columnTableWrap.css('top', that.$table.offset().top - $(window).scrollTop());
-      }
+      that.$columnTableWrap.offset({top: that.$tableWrapper.offset().top});
     }
 
     // Column keep option
@@ -412,7 +431,7 @@
     /**
      * Listener - Window resize for effecting tables
      */
-    $(window).on('resize.'+this.namespace, function() {
+    this.$container.on('resize.'+this.namespace, function() {
 
       // Follows origin table's width
       $columnTable.width(that.$table.width());
@@ -436,7 +455,7 @@
     /**
      * Listener - Window scroll for effecting freeze column table
      */
-    $(window).on('scroll.'+this.namespace, function() {
+    this.$container.on('scroll.'+this.namespace, function() {
 
       localizeWrap();
     });
@@ -503,20 +522,39 @@
         detect();
       });
       
-    } else {
+    } 
+    // Default with window container
+    else if ($.isWindow(this.$container.get(0))) {
 
-      /**
-       * Detect column-head wrap to show or not
-       */
       var detect = function () {
 
         // Current container's top position
-        var topPosition = $(window).scrollTop() + that.fixedNavbarHeight;
+        var topPosition = that.$container.scrollTop() + that.fixedNavbarHeight;
+        var tableTop = that.$table.offset().top - 1;
         
         // Detect Current container's top is in the table scope
-        // Plus tableWrapper scroll detection
-        if (that.$table.offset().top - 1 <= topPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= topPosition && that.$tableWrapper.scrollLeft() > 0) {
+        if (tableTop - 1 <= topPosition && (tableTop + that.$table.outerHeight() - 1) >= topPosition && that.$tableWrapper.scrollLeft() > 0) {
 
+          that.$columnHeadTableWrap.css('visibility', 'visible');
+
+        } else {
+
+          that.$columnHeadTableWrap.css('visibility', 'hidden');
+        }
+      }
+    }
+    // Container setting
+    else {
+
+      var detect = function () {
+
+        var windowTop = $(window).scrollTop();
+        var tableTop = that.$table.offset().top - 1;
+
+        // Detect Current container's top is in the table scope
+        if (tableTop <= windowTop && (tableTop + that.$table.outerHeight() - 1) >= windowTop && that.$tableWrapper.scrollLeft() > 0) {
+
+          that.$columnHeadTableWrap.offset({top: windowTop});
           that.$columnHeadTableWrap.css('visibility', 'visible');
 
         } else {
@@ -529,7 +567,7 @@
     /**
      * Listener - Window scroll for effecting Freeze column-head table
      */
-    $(window).on('scroll.'+this.namespace, function() {
+    this.$container.on('scroll.'+this.namespace, function() {
 
       detect();
     });
@@ -549,7 +587,7 @@
     /**
      * Listener - Window resize for effecting freeze column-head table
      */
-    $(window).on('resize.'+this.namespace, function() {
+    this.$container.on('resize.'+this.namespace, function() {
 
       // Table synchronism
       that.$columnHeadTableWrap.find("> table").css('width', that.$table.width());
@@ -606,10 +644,10 @@
     /**
      * Listener - Window scroll for effecting scroll bar
      */
-    $(window).on('scroll.'+this.namespace, function() {
+    this.$container.on('scroll.'+this.namespace, function() {
       
       // Current container's top position
-      var bottomPosition = $(window).scrollTop() + $(window).height() - theadHeight + that.fixedNavbarHeight;
+      var bottomPosition = that.$container.scrollTop() + that.$container.height() - theadHeight + that.fixedNavbarHeight;
       
       // Detect Current container's top is in the table scope
       if (that.$table.offset().top - 1 <= bottomPosition && (that.$table.offset().top + that.$table.outerHeight() - 1) >= bottomPosition) {
@@ -625,7 +663,7 @@
     /**
      * Listener - Window resize for effecting scroll bar
      */
-    $(window).on('resize.'+this.namespace, function() {
+    this.$container.on('resize.'+this.namespace, function() {
       
       // Update width
       $scrollBarContainer.css('width', that.$table.width())
@@ -698,8 +736,8 @@
    */
   FreezeTable.prototype.unbind = function() {
 
-    $(window).off('resize.'+this.namespace);
-    $(window).off('scroll.'+this.namespace);
+    this.$container.off('resize.'+this.namespace);
+    this.$container.off('scroll.'+this.namespace);
     this.$tableWrapper.off('scroll.'+this.namespace);
   }
 
@@ -720,8 +758,8 @@
    */
   FreezeTable.prototype.resize = function() {
 
-    $(window).trigger('resize.'+this.namespace);
-    $(window).trigger('scroll.'+this.namespace);
+    this.$container.trigger('resize.'+this.namespace);
+    this.$container.trigger('scroll.'+this.namespace);
     this.$tableWrapper.trigger('scroll.'+this.namespace);
 
     return true;
