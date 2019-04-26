@@ -2,7 +2,7 @@
  * RWD Table with freezing head and columns for jQuery
  * 
  * @author  Nick Tsai <myintaer@gmail.com>
- * @version 1.2.0
+ * @version 1.3.0
  * @see     https://github.com/yidas/jquery-freeze-table
  */
 (function ($, window) {
@@ -32,7 +32,7 @@
 
     // Caches
     this.$table = this.$tableWrapper.children("table");
-    this.$container;
+    this.$container = ((typeof this.options.container !== 'undefined') && this.options.container && $(this.options.container).length) ? $(this.options.container) : $(window);
     this.$headTableWrap;
     this.$columnTableWrap;
     this.$columnHeadTableWrap;
@@ -103,8 +103,6 @@
 
     // Get navbar height for keeping fixed navbar
     this.fixedNavbarHeight = (fixedNavbar) ? $(fixedNavbar).outerHeight() || 0 : 0;
-    // Container setting
-    this.$container = ((typeof options.container !== 'undefined') && options.container && $(options.container).length) ? $(options.container) : $(window);
     
     // Check existence
     if (this.isInit()) {
@@ -700,8 +698,8 @@
     var that = this;
     
     var $headTable = $(table);
-    // Remove non-display DOM
-    $headTable.find("> tr, > tbody, > tfoot").remove();
+    // Remove non-display DOM but keeping first row for accuracy
+    $headTable.find("> tr, > tbody > tr, tfoot > tr").not(':first').remove();
     // Each th/td width synchronism
     $.each($headTable.find("> thead > tr:nth-child(1) >"), function (key, value) {
       
