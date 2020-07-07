@@ -30,7 +30,7 @@ OUTLINE
 - [Installation](#installation)
     - [Bower Installation](#bower-installation)
     - [Assets include](#assets-include)
-    - [Initailize via JavaScript](#initailize-via-javascript)
+    - [Initialize via JavaScript](#initialize-via-javascript)
     - [Options](#options)
 - [Implementation](#implementation)
     - [Resize](#resize)
@@ -94,7 +94,7 @@ Add the classes `.table` to the tables as usual when using Bootstrap, then wrap 
 </div>
 ```
 
-### Initailize via JavaScript
+### Initialize via JavaScript
 
 You can initialize Freeze Table by jQuery extension call:
 
