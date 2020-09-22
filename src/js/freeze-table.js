@@ -330,6 +330,7 @@
      */
     var columnWrapStyles = this.options.columnWrapStyles || null;
     var columnNum = this.options.columnNum || 1;
+    var rowIndex = this.options.rowIndex || 1;
     var columnKeep = (typeof this.options.columnKeep !== 'undefined') ? this.options.columnKeep : false;
       // Shadow option
       var defaultColumnBorderWidth = (this.shadow) ? 0 : 1;
@@ -439,11 +440,12 @@
        */
       // Get width by fixed column with number setting
       var width = 0 + columnBorderWidth;
+      var tr = that.$table.find('tr:nth-child(' + rowIndex + ')');
       for (var i = 1; i <= columnNum; i++) {
         // th/td detection
-        var th = that.$table.find('th:nth-child('+i+')').outerWidth();
-        var addWidth = (th > 0) ? th : that.$table.find('td:nth-child('+i+')').outerWidth();
-        width += addWidth;
+          var th = tr.find('th:nth-child(' + i + ')').outerWidth();
+          var addWidth = (th > 0) ? th : tr.find('td:nth-child(' + i + ')').outerWidth();
+          width += addWidth;
       }
       that.$columnTableWrap.width(width);
 
