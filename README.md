@@ -67,7 +67,7 @@ INSTALLATION
 bower install jquery-freeze-table
 ```
 
-> You could also download by NPM or directly copy [`dist`](https://github.com/yidas/jquery-freeze-table/tree/master/dist) assets.
+> You could also download by [NPM](https://www.npmjs.com/package/jquery-freeze-table) or directly copy [`dist`](https://github.com/yidas/jquery-freeze-table/tree/master/dist) assets.
 
 ### Assets include
 
