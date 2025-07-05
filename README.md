@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://jquery.com" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/JQuery_logo.svg/220px-JQuery_logo.svg.png" height="50px">
+        <img src="https://jquery.com/wp-content/themes/jquery/images/logo-jquery.png" height="50px">
     </a>
         <h1 align="center"><i>RWD</i> Freeze Table</h1>
     <br>
